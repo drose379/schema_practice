@@ -3,8 +3,7 @@ create table `phone`(
 )engine=innodb charset=utf8;
 
 create table `hobbies` (
-	`id` bigint primary key,
-	`hobbie` bigint
+	`hobbie` varchar(140) primary key,
 )engine=innodb charset=utf8;
 
 create table `address` (
@@ -15,16 +14,16 @@ create table `address` (
 create table `person` (
 	`id` serial primary key,
 	`name` varchar(50),
-	`phone` varchar(16),
+	`phone` varchar(15),
 	foreign key(`phone`) references `phone`(`phone`)
 )engine=innodb charset=utf8;
 
 create table `person_hobbies` (
 	`person` bigint unsigned not null,
-	`hobbies` bigint,
+	`hobbies` varchar(140),
 	primary key (`person`,`hobbies`),
 	foreign key (`person`) references `person`(`id`),
-	foreign key (`hobbies`) references `hobbies`(`id`)
+	foreign key (`hobbies`) references `hobbies`(`hobbie`)
 )engine=innodb charset=utf8;
 
 create table `person_address` (
