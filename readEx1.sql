@@ -2,12 +2,13 @@ select p.name, p.phone
 from person p
 where p.id = ?;
 
-select pa.person
-from person_address pa
-join address a on pa.person = a.id
+select a.address
+from address a
+join person_address pa on a.id = pa.address
 where pa.person = ?;
 
-select ph.person 
-from person_hobbies ph
-join hobbies h on ph.hobby = h.hobby
+select h.hobby 
+from hobbies h
+join person_hobbies ph on h.hobby = ph.hobby
 where ph.person = ?;
+
