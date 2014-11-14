@@ -20,10 +20,10 @@ create table `person` (
 
 create table `person_hobbies` (
 	`person` bigint unsigned not null,
-	`hobbies` varchar(140),
-	primary key (`person`,`hobbies`),
+	`hobby` varchar(140),
+	primary key (`person`,`hobby`),
 	foreign key (`person`) references `person`(`id`),
-	foreign key (`hobbies`) references `hobbies`(`hobby`)
+	foreign key (`hobby`) references `hobbies`(`hobby`)
 )engine=innodb charset=utf8;
 
 create table `person_address` (
