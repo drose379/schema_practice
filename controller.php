@@ -13,7 +13,13 @@ catch (PDOexception $e) {
 
 
 $insert = new insertClass($dbc);
-$arrayPhone = array('7853327765');
-$insert->newPhone($arrayPhone);
 
+$phone = array('7853327765');
+$infoArray = array('1','Foo','7853327765');
+try {
+	$insert->newPerson($phone,$infoArray);
+}
+catch (Exception $ex) {
+	echo "Could not call method";
+}
 

@@ -7,8 +7,10 @@ protected $con;
 		$this->con = $dbc;
 	}
 
-	public function newPhone($array) {
+	public function newPerson($phone,$infoArray) {
 		$query = $this->con->prepare("INSERT INTO phone (phone) VALUES (?)");
-		$query->execute($array);
+		$query->execute($phone);
+		$query = $this->con->prepare("INSERT INTO person (id,name,phone) VALUES (?,?,?)");
+		$query->execute($infoArray);
 	}
 }
