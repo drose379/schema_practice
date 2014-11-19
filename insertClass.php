@@ -1,12 +1,19 @@
 <?php
-
 class insertClass {
 
-public function insertPerson($connection) {
-	$query = $connection->prepare("insert into person (id,name,phone) values ('1','Dylan','5542236549')");
-	return $query->execute();
-}
+protected $con;
 
+	public function __construct($dbc) {
+		$this->con = $dbc;
+	}
 
-
+	public function newPerson($array) {
+		try {
+			$query = $this->con->prepare("INSERT INTO person (id,name,phone) VALUES (?,?,?)");
+			$query->execute($array);
+		}
+		catch (Exception $e) {
+			echo "Bad query";
+		}
+	}
 }
