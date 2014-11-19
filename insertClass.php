@@ -7,13 +7,8 @@ protected $con;
 		$this->con = $dbc;
 	}
 
-	public function newPerson($array) {
-		try {
-			$query = $this->con->prepare("INSERT INTO person (id,name,phone) VALUES (?,?,?)");
-			$query->execute($array);
-		}
-		catch (Exception $e) {
-			echo "Bad query";
-		}
+	public function newPhone($array) {
+		$query = $this->con->prepare("INSERT INTO phone (phone) VALUES (?)");
+		$query->execute($array);
 	}
 }
